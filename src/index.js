@@ -4,162 +4,165 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CustomizedTables from './components/CustomizedTables';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import data from "./constant.json"
 
 // "header": {
 //   mainHeader: "financial",
 //   subHeader: "all data"
 // },
 
-var data = [
+// var data = [
 
-  {
-    "header": {
-      "mainHeader": "financial",
-      "subHeader": "all data",
-      "para": "something should come here"
-    },
-
-
-    "tableContent": [
-      {
-        "accordion": false,
-        "tableHeader": "header 1",
-        "tableRow": [
-          {
-            "type": "normal",
-            "rowData": "somethinh 1",
-            "value": "0.87"
-          },
-          {
-            "type": "normal",
-            "rowData": "somethinh 2",
-            "value": "0.88"
-          },
-          {
-            "type": "normal",
-            "rowData": "somethinh 3",
-            "value": "0.89"
-          },
-        ]
-
-      },
-      {
-        "accordion": false,
-        "tableHeader": "header 2",
-        "tableRow": [
-          {
-            "type": "normal",
-            "rowData": "somethinh 1",
-            "value": "0.87"
-          },
-          {
-            "type": "nested",
-            "subTable": [
-              {
-                "subTableHeader": "sub heading 1",
-                "subTableRow": [
-                  {
-                    "rowData": "sub row 1",
-                    "value": "0.88"
-                  },
-                  {
-                    "rowData": "sub row 2 ",
-                    "value": "0.88"
-                  },
-                  {
-                    "rowData": "sub row 3 ",
-                    "value": "0.88"
-                  },
-
-                ]
-              }
-            ],
-
-          },
-          {
-            "type": "normal",
-            "rowData": "somethinh 1",
-            "value": "0.89"
-          },
-        ]
-
-      },
-      {
-        "accordion": true,
-        "tableHeader": "header 3",
-        "tableRow": [
-          {
-            "type": "normal",
-            "rowData": "somethinh 1",
-            "value": "0.87"
-          },
-          {
-            "type": "nested",
-            "subTable": [
-              {
-                "subTableHeader": "sub heading 1",
-                "subTableRow": [
-                  {
-                    "rowData": "sub row 1",
-                    "value": "0.88"
-                  },
-                  {
-                    "rowData": "sub row 2 ",
-                    "value": "0.88"
-                  },
-                  {
-                    "rowData": "sub row 3 ",
-                    "value": "0.88"
-                  },
-
-                ]
-              }
-            ],
-          },
-          {
-            "type": "normal",
-            "rowData": "somethinh 1",
-            "value": "0.89"
-          },
-
-        ]
-
-      },
-      {
-        "accordion": true,
-        "tableHeader": "header 4",
-        "tableRow": [
-          {
-            "type": "normal",
-            "rowData": "somethinh 1",
-            "value": "0.87"
-          },
-          {
-            "type": "normal",
-            "rowData": "somethinh 2",
-            "value": "0.88"
-          },
-          {
-            "type": "normal",
-            "rowData": "somethinh 1",
-            "value": "0.89"
-          },
-
-        ]
-
-      }
-
-    ]
-
-  }
+//   {
+//     "header": {
+//       "mainHeader": "financial",
+//       "subHeader": "all data",
+//       "para": "something should come here"
+//     },
 
 
+//     "tableContent": [
+//       {
+//         "accordion": false,
+//         "tableHeader": "header 1",
+//         "tableRow": [
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 1",
+//             "value": "0.87"
+//           },
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 2",
+//             "value": "0.88"
+//           },
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 3",
+//             "value": "0.89"
+//           },
+//         ]
+
+//       },
+//       {
+//         "accordion": false,
+//         "tableHeader": "header 2",
+//         "tableRow": [
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 1",
+//             "value": "0.87"
+//           },
+//           {
+//             "type": "nested",
+//             "subTable": [
+//               {
+//                 "subTableHeader": "sub heading 1",
+//                 "subTableRow": [
+//                   {
+//                     "rowData": "sub row 1",
+//                     "value": "0.88"
+//                   },
+//                   {
+//                     "rowData": "sub row 2 ",
+//                     "value": "0.88"
+//                   },
+//                   {
+//                     "rowData": "sub row 3 ",
+//                     "value": "0.88"
+//                   },
+
+//                 ]
+//               }
+//             ],
+
+//           },
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 1",
+//             "value": "0.89"
+//           },
+//         ]
+
+//       },
+//       {
+//         "accordion": true,
+//         "tableHeader": "header 3",
+//         "tableRow": [
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 1",
+//             "value": "0.87"
+//           },
+//           {
+//             "type": "nested",
+//             "subTable": [
+//               {
+//                 "subTableHeader": "sub heading 1",
+//                 "subTableRow": [
+//                   {
+//                     "rowData": "sub row 1",
+//                     "value": "0.88"
+//                   },
+//                   {
+//                     "rowData": "sub row 2 ",
+//                     "value": "0.88"
+//                   },
+//                   {
+//                     "rowData": "sub row 3 ",
+//                     "value": "0.88"
+//                   },
+
+//                 ]
+//               }
+//             ],
+//           },
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 1",
+//             "value": "0.89"
+//           },
+
+//         ]
+
+//       },
+//       {
+//         "accordion": true,
+//         "tableHeader": "header 4",
+//         "tableRow": [
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 1",
+//             "value": "0.87"
+//           },
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 2",
+//             "value": "0.88"
+//           },
+//           {
+//             "type": "normal",
+//             "rowData": "somethinh 1",
+//             "value": "0.89"
+//           },
+
+//         ]
+
+//       }
+
+//     ]
+
+//   }
 
 
 
 
 
-]
+
+
+// ]
 
 
 
@@ -173,8 +176,11 @@ var data = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App data={data} />
-    <CustomizedTables data={data} />
+    <Provider store={store}>
+      {/*<App data={data} />*/}
+      <CustomizedTables data={data} />
+    </Provider>
+
 
   </React.StrictMode>
 );

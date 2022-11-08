@@ -11,6 +11,9 @@ import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
+import { TextField } from '@mui/material';
+import { useSelector } from 'react-redux';
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.black,
@@ -37,7 +40,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const ExpandableTableRow = ({ item }) => {
     const [isExpanded, setIsExpanded] = React.useState(false);
-    console.log(item)
+    // console.log(item)
+
+    const handleChange = () => {
+
+    }
 
     return (
         <>
@@ -63,7 +70,9 @@ const ExpandableTableRow = ({ item }) => {
                                     {row.rowData}
                                 </StyledTableCell>
 
-                                <StyledTableCell align="right">{row.value}$</StyledTableCell>
+                                <StyledTableCell align="right">
+                                    <TextField id="standard-basic" label="Standard" value={row.value} onChange={handleChange} variant="standard" />
+                                </StyledTableCell>
                             </StyledTableRow> :
 
                             <>
@@ -77,7 +86,7 @@ const ExpandableTableRow = ({ item }) => {
                                             {row.rowData}
                                         </StyledTableCell>
 
-                                        <StyledTableCell align="right">{row.value}$</StyledTableCell>
+                                        <StyledTableCell align="right"> <TextField id="standard-basic" label="Standard" value={row.value} onChange={handleChange} variant="standard" /></StyledTableCell>
                                     </StyledTableRow>
                                 ))}
                             </>
@@ -92,10 +101,17 @@ const ExpandableTableRow = ({ item }) => {
 
 export default function CustomizedTables(props) {
     // console.log(props.data[0]);
+    const tableContent = useSelector(state => state.tableContent)
+    console.log(tableContent)
+
+    const handleChange = () => {
+
+    }
+
     return <>
 
         {
-            props.data[0].tableContent.map((item) => (
+            tableContent.map((item) => (
                 !item.accordion ?
                     <TableContainer component={Paper} sx={{ m: 2 }}>
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -113,7 +129,7 @@ export default function CustomizedTables(props) {
                                                 {row.rowData}
                                             </StyledTableCell>
 
-                                            <StyledTableCell align="right">{row.value}$</StyledTableCell>
+                                            <StyledTableCell align="right"> <TextField id="standard-basic" label="Standard" value={row.value} onChange={handleChange} variant="standard" /></StyledTableCell>
                                         </StyledTableRow> :
 
                                         <>
@@ -127,7 +143,7 @@ export default function CustomizedTables(props) {
                                                         {row.rowData}
                                                     </StyledTableCell>
 
-                                                    <StyledTableCell align="right">{row.value}$</StyledTableCell>
+                                                    <StyledTableCell align="right"><TextField id="standard-basic" label="Standard" value={row.value} onChange={handleChange} variant="standard" /></StyledTableCell>
                                                 </StyledTableRow>
                                             ))}
                                         </>
